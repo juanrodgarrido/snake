@@ -5,6 +5,8 @@ const formInicio = document.getElementById("form-inicio");
 const inputNombre = document.getElementById("nombre");
 const textoError = document.getElementById("error");
 const infoNombre = document.getElementById("info-nombre");
+const finNombre = document.getElementById("fin-nombre");
+const volverJugar = document.getElementById("volver");
 
 
 let nombreJugador = "";
@@ -26,6 +28,7 @@ formInicio.addEventListener("submit", function (event) {
 
     nombreJugador = nombre;
     infoNombre.textContent = nombreJugador;
+    finNombre.textContent = nombreJugador;
 
     pantallaInicio.classList.add("oculta");
     pantallaJuego.classList.remove("oculta");
@@ -36,20 +39,39 @@ formInicio.addEventListener("submit", function (event) {
 
 document.addEventListener("keydown", function (event) {
 
+    if(!jugando){
+        return;
+    }
+    
     switch(event.key){
         case "ArrowUp":
+        case "W":
+        case "w":
             cambiarDireccion({x: 0, y: -1});
             break;
         case "ArrowDown":
+        case "S":
+        case "s":   
             cambiarDireccion({x: 0, y: 1});
             break;
         case "ArrowLeft":
+        case "A":
+        case "a":
             cambiarDireccion({x: -1, y: 0});
             break;
         case "ArrowRight":
+        case "D":
+        case "d":
             cambiarDireccion({x: 1, y: 0});
             break;
     }
+    
+
+
+})
+
+volverJugar.addEventListener("click", function (){
+    iniciarJuego();
 
 
 })
