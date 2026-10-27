@@ -9,6 +9,15 @@ const modalFin = document.getElementById("fin");
 const mensajeFinal = document.getElementById("mensaje-fin");
 const finPuntuacion = document.getElementById("fin-puntuacion");
 const finTiempo = document.getElementById("fin-tiempo");
+
+const COLOR_CUERPO = "#008751";
+const COLOR_CABEZA = "#00e436";
+const COLOR_OJOS = "#000000";
+const COLOR_MANZANA = "#ff004d";
+const COLOR_BRILLO = "#fff1e8";
+const COLOR_HOJA = "#00e436";
+
+
 let manzana;
 let intervalo;
 let intervaloTiempo;
@@ -20,27 +29,7 @@ let siguienteDireccion;
 let jugando = false;
 
 
-function dibujar() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#e40f0f";
-  ctx.fillRect(
-    manzana.x * TAMANO_CASILLA,
-    manzana.y * TAMANO_CASILLA,
-    TAMANO_CASILLA,
-    TAMANO_CASILLA,
-  );
-
-  ctx.fillStyle = "#4caf50";
-  for (const casilla of serpiente) {
-    ctx.fillRect(
-      casilla.x * TAMANO_CASILLA,
-      casilla.y * TAMANO_CASILLA,
-      TAMANO_CASILLA,
-      TAMANO_CASILLA,
-    );
-  }
-}
 
 function colocarManzana() {
   do {
@@ -164,4 +153,61 @@ function cambiarDireccion(nuevaDireccion) {
   }
 
   siguienteDireccion = nuevaDireccion;
+}
+
+/* METODOS PARA DIBUJAR LA SERPIENTE Y LA MANZANA */
+
+function dibujar() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dibujarManzana();
+  dibujarSerpiente();
+}
+
+function dibujarManzana() {
+  const x = manzana.x * TAMANO_CASILLA;
+  const y = manzana.y * TAMANO_CASILLA;
+
+  ctx.fillStyle = COLOR_MANZANA;
+  ctx.fillRect(x + 4, y + 6, 17, 17);
+
+  ctx.fillStyle = COLOR_BRILLO;
+  ctx.fillRect(x + 7, y + 9, 4, 4);
+
+  ctx.fillStyle = COLOR_HOJA;
+  ctx.fillRect(x + 12, y + 1, 5, 5);
+}
+
+function dibujarSerpiente() {
+  ctx.fillStyle = COLOR_CUERPO;
+  for (const casilla of serpiente) {
+    ctx.fillRect(
+      casilla.x * TAMANO_CASILLA + 1,
+      casilla.y * TAMANO_CASILLA + 1,
+      TAMANO_CASILLA - 2,
+      TAMANO_CASILLA - 2,
+    );
+  }
+
+  const cabeza = serpiente[0];
+  const x = cabeza.x * TAMANO_CASILLA;
+  const y = cabeza.y * TAMANO_CASILLA;
+
+  ctx.fillStyle = COLOR_CABEZA;
+  ctx.fillRect(x + 1, y + 1, TAMANO_CASILLA - 2, TAMANO_CASILLA - 2);
+
+  dibujarOjos(x, y);
+}
+
+function dibujarOjos(x, y) {
+  const centro = 12;
+  const adelante = 4;
+  const separacion = 5;
+  const lado = { x: direccion.y, y: direccion.x };
+
+  const frenteX = x + centro + direccion.x * adelante;
+  const frenteY = y + centro + direccion.y * adelante;
+
+  ctx.fillStyle = COLOR_OJOS;
+  ctx.fillRect(frenteX + lado.x * separacion - 2, frenteY + lado.y * separacion - 2, 4, 4);
+  ctx.fillRect(frenteX - lado.x * separacion - 2, frenteY - lado.y * separacion - 2, 4, 4);
 }
