@@ -7,6 +7,7 @@ const textoError = document.getElementById("error");
 const infoNombre = document.getElementById("info-nombre");
 const finNombre = document.getElementById("fin-nombre");
 const volverJugar = document.getElementById("volver");
+const textoErrorBD = document.getElementById("fin-error");
 
 
 let nombreJugador = "";
@@ -71,7 +72,18 @@ document.addEventListener("keydown", function (event) {
 })
 
 volverJugar.addEventListener("click", function (){
+    textoErrorBD.classList.add("oculta");
     iniciarJuego();
 
 
 })
+
+async function alTerminarPartida(puntos, segundos){
+
+    const guardado = await guardarPartida(nombreJugador, puntos, segundos);
+    if(!guardado){
+        textoErrorBD.classList.remove("oculta");
+    }
+
+}
+

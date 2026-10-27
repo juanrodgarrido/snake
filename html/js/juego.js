@@ -145,6 +145,8 @@ function terminarPartida(haGanado) {
   } else {
     mensajeFinal.textContent = "DERROTA";
   }
+
+  alTerminarPartida(puntuacion, tiempo);
 }
 
 function cambiarDireccion(nuevaDireccion) {
