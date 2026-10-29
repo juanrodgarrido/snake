@@ -1,54 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/estilos.css" />     
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/estilos.css"
+    />
     <title>Snake</title>
-</head>
-<body>
-    
-    <div class = "container " id = "inicio">
-        <div class = "cabecera">
-        <h1 class = "titulo">SNAKE</h1>
-        <div id = "top5" class = "caja top5">
-            <h2>TOP 5 PUNTUACIONES</h2>
-            <ol id = "listatop5"></ol>
+  </head>
+  <body>
+    <div class="container inicio" id="inicio">
+      <div class="cabecera">
+        <h1 class="titulo">SNAKE</h1>
+        <div class="caja top5">
+          <h2>TOP 5 PUNTUACIONES</h2>
+          <ol id="listatop5"></ol>
         </div>
-    </div>
-        <form id = "form-inicio" class = "caja">
-            <label for = "nombre">Nombre de usuario</label>
-            <input type = "text" id = "nombre" name = "nombre" placeholder="Escribe tu nombre">
-            <p id = "error" class = "error oculta"></p>
-            <button type = "submit">JUGAR!</button>
-        </form>
+      </div>
+      <form id="form-inicio" class="caja">
+        <label for="nombre">Nombre de usuario</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Escribe tu nombre"
+          maxlength="10"
+        />
+        <p id="error" class="error oculta"></p>
+        <button type="submit">JUGAR!</button>
+      </form>
     </div>
 
-     <div class="container oculta" id="juego">
-        <div class="caja info">
-            <p>Jugador: <span id="info-nombre"></span></p>
-            <p>Puntuación: <span id="info-puntuacion">0</span></p>
-            <p>Tiempo: <span id="info-tiempo">0</span></p>
-        </div>
-        <canvas id="tablero" class="tablero" width="500" height="500"></canvas>
-        <div class = "caja fin oculta" id = "fin">
-            <h2 id = "mensaje-fin"></h2>
-            <p>Jugador: <span id="fin-nombre"></span></p>
-            <p>Puntuación: <span id="fin-puntuacion"></span></p>
-            <p>Tiempo: <span id="fin-tiempo"></span></p>
-            <p id = "fin-error" class = "error oculta">No se ha podido guardar la puntuación</p>
-            <button type="button" id = "volver">Volver a jugar</button>
-            <button type="button" id = "menuPrincipal">Volver al menú</button>
-        </div>
+    <div class="container oculta" id="juego">
+      <div class="caja info">
+        <p>Jugador: <span id="info-nombre"></span></p>
+        <p>Puntuación: <span id="info-puntuacion">0</span></p>
+        <p>Tiempo: <span id="info-tiempo">0</span></p>
+      </div>
+      <canvas id="tablero" class="tablero" width="500" height="500"></canvas>
+      <div class="caja fin oculta" id="fin">
+        <h2 id="mensaje-fin"></h2>
+        <p>Jugador: <span id="fin-nombre"></span></p>
+        <p>Puntuación: <span id="fin-puntuacion"></span></p>
+        <p>Tiempo: <span id="fin-tiempo"></span></p>
+        <p id="fin-error" class="error oculta">
+          No se ha podido guardar la puntuación
+        </p>
+        <button type="button" id="volver">Volver a jugar</button>
+        <button type="button" id="menuPrincipal">Volver al menú</button>
+      </div>
     </div>
-    
-
-
 
     <script src="js/api.js"></script>
     <script src="js/juego.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
-
-

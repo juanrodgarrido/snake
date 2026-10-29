@@ -55,16 +55,6 @@ if($puntuacion > ($tiempo + 1) * 8){
     responderError("Puntuación imposible");
 }
 
-
-
-
-
-
-
-
-
-
-
 $coleccion = obtenerColeccion();
 $coleccion->insertOne(["nombre" => $nombre, "puntuacion" => $puntuacion, "tiempo" => $tiempo]);
 

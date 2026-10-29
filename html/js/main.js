@@ -11,6 +11,7 @@ const listaTop5 = document.getElementById("listatop5");
 const volverMenu = document.getElementById("menuPrincipal");
 
 let nombreJugador = "";
+let promesaGuardado = null; //Esta promesa existe por si una persona le da muy rapido a "Volver al menú" y se hace antes la petición get del top5 que el post de guardar partida
 
 formInicio.addEventListener("submit", function (event) {
   event.preventDefault(); //para que la página no se recargue
@@ -71,16 +72,18 @@ volverJugar.addEventListener("click", function () {
 });
 
 
-volverMenu.addEventListener("click", function () {
-  mostrarTop5();
+volverMenu.addEventListener("click", async function () {
   textoErrorBD.classList.add("oculta");
   pantallaInicio.classList.remove("oculta");
   pantallaJuego.classList.add("oculta");
+  await promesaGuardado;
+  mostrarTop5();
 });
 
 
 async function alTerminarPartida(puntos, segundos) {
-  const guardado = await guardarPartida(nombreJugador, puntos, segundos);
+  promesaGuardado = guardarPartida(nombreJugador, puntos, segundos);
+  const guardado = await promesaGuardado;
   if (!guardado) {
     textoErrorBD.classList.remove("oculta");
   }
