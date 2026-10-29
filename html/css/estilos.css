@@ -214,3 +214,27 @@ button:active {
 .oculta {
   display: none;
 }
+
+.top5 ol{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top5-fila{
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+
+}
+
+.top5-puntos{
+  font-weight: 700
+}
+
+.top5-posicion{
+  color: var(--sombra);
+  font-weight: 700
+}
